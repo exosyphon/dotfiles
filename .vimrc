@@ -27,6 +27,7 @@ set cindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set re=0
 
 nnoremap <C-p> :Files<Cr>
 nnoremap <Leader>f :Rg<Cr>
