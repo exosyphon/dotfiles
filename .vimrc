@@ -14,6 +14,10 @@ set encoding=UTF-8
     Plug 'airblade/vim-gitgutter'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'preservim/nerdtree'
+    Plug 'dense-analysis/ale'
+    Plug 'vim-airline/vim-airline'
+    Plug 'udalov/kotlin-vim'
 call plug#end()
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
