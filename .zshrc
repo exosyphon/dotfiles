@@ -122,14 +122,15 @@ alias glt='git describe --tags --abbrev=0'
 alias awsume='. awsume sso;. awsume' 
 
 # Tmux
-# Attaches tmux to the last session; creates a new session if none exists.
-alias t='tmux attach || tmux new-session'
 # Attaches tmux to a session (example: ta portal)
 alias ta='tmux attach -t'
 # Creates a new session
-alias tn='tmux new-session'
+alias tn='tmux new-session -s '
+# Kill session
+alias tk='tmux kill-session -t '
 # Lists all ongoing sessions
 alias tl='tmux list-sessions'
+# Detach from session
 alias td='tmux detach'
 # Tmux Clear pane
 alias tc='clear; tmux clear-history; clear'
