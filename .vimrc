@@ -2,22 +2,23 @@ syntax on
 set nu
 set relativenumber
 set encoding=UTF-8
+set autoindent
 
- call plug#begin()
-    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'preservim/nerdtree'
-    Plug 'dense-analysis/ale'
-    Plug 'vim-airline/vim-airline'
-    Plug 'udalov/kotlin-vim'
+call plug#begin()
+  Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'preservim/nerdtree'
+  Plug 'dense-analysis/ale'
+  Plug 'vim-airline/vim-airline'
+  Plug 'udalov/kotlin-vim'
 call plug#end()
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
