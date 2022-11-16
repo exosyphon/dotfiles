@@ -2,7 +2,17 @@ syntax on
 set nu
 set relativenumber
 set encoding=UTF-8
-set autoindent
+set smarttab
+set smartindent
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set re=0
+set nowrap
+set noswapfile
+set incsearch
+set scrolloff=8
+set guicursor=
 
 call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
@@ -26,14 +36,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 let g:NERDTreeIgnore = ['^node_modules']
 
 vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
-
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set re=0
+nmap ++ <plug>NERDCommenterToggle 
 
 nnoremap <C-p> :Files<Cr>
 nnoremap <Leader>f :Rg<Cr>
