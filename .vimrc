@@ -38,6 +38,7 @@ let g:NERDTreeIgnore = ['^node_modules']
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle 
 
+let mapleader = " "
 nnoremap <C-p> :Files<Cr>
 nnoremap <Leader>f :Rg<Cr>
 
