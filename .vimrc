@@ -41,6 +41,7 @@ nmap ++ <plug>NERDCommenterToggle
 let mapleader = " "
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-Q> :Rg<Cr>
+nnoremap Y y$
 
 function! NerdTreeToggleFind()
     if exists("g:NERDTree") && g:NERDTree.IsOpen()
