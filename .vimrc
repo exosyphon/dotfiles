@@ -29,6 +29,7 @@ call plug#begin()
   Plug 'dense-analysis/ale'
   Plug 'vim-airline/vim-airline'
   Plug 'udalov/kotlin-vim'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
