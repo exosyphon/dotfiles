@@ -1,5 +1,6 @@
 set ideajoin
 set surround
+set multiple-cursors
 
 let mapleader = " "
 
@@ -24,6 +25,11 @@ nmap <leader>s <action>(QuickChangeScheme)
 nmap <leader>/ <action>(ShowErrorDescription)
 nmap <leader>e <action>(GotoNextError)
 nnoremap <leader><leader> <C-Tab>
+
+" multi cursor
+map mc <A-n>
+map mx <A-x>
+map mp <A-p>
 
 set NERDTree
 let g:NERDTreeMapActivateNode='l'
