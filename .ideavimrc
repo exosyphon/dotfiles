@@ -25,6 +25,8 @@ nmap <leader>s <action>(QuickChangeScheme)
 nmap <leader>/ <action>(ShowErrorDescription)
 nmap <leader>e <action>(GotoNextError)
 nnoremap <leader><leader> <C-Tab>
+nnoremap <c-\> :action MoveTabRight<CR>
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
 
 " multi cursor
 map mc <A-n>
