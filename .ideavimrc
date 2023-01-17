@@ -1,6 +1,7 @@
 set ideajoin
 set surround
 set multiple-cursors
+set incsearch
 
 let mapleader = " "
 
@@ -16,9 +17,7 @@ vmap <leader>p "+p
 vmap <leader>P "+P
 
 " actions
-nmap <leader>h <action>(PreviousTab)
-nmap <leader>l <action>(NextTab)
-nmap <leader>bd <action>(CloseEditor)
+nmap <leader>q <action>(CloseEditor)
 nmap <leader>i <action>(Generate)
 nmap <leader>m <action>(Git.Menu)
 nmap <leader>s <action>(QuickChangeScheme)
@@ -27,11 +26,37 @@ nmap <leader>e <action>(GotoNextError)
 nnoremap <leader><leader> <C-Tab>
 nnoremap <c-\> :action MoveTabRight<CR>
 nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <c--> :action SplitHorizontally<CR>
+
+sethandler <c-g> a:ide
+sethandler <c-w> a:vim
+sethandler <c-d> a:vim
+sethandler <c-a> a:vim
+sethandler <c-f> a:vim
+sethandler <c-e> a:vim
+sethandler <c-r> a:vim
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+sethandler <c-h> a:vim
+sethandler <c-l> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 
 " multi cursor
 map mc <A-n>
 map mx <A-x>
 map mp <A-p>
+
+" Running and debugging
+nnoremap ,r :action Rerun<CR>
+nnoremap ,c :action RunClass<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,d :action ContextDebug<CR>
 
 set NERDTree
 let g:NERDTreeMapActivateNode='l'
