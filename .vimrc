@@ -31,6 +31,7 @@ call plug#begin()
   Plug 'udalov/kotlin-vim'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
