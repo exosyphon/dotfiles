@@ -50,6 +50,8 @@ vmap s S
 " Use system clipboard
 set clipboard=unnamed
 
+nnoremap <leader>b :Buffer<CR>
+
 function! NerdTreeToggleFind()
     if exists("g:NERDTree") && g:NERDTree.IsOpen()
         NERDTreeClose
