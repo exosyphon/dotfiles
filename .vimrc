@@ -47,6 +47,9 @@ nnoremap Y y$
 xnoremap <leader>p "_dP
 vmap s S
 
+" Use system clipboard
+set clipboard=unnamed
+
 function! NerdTreeToggleFind()
     if exists("g:NERDTree") && g:NERDTree.IsOpen()
         NERDTreeClose
