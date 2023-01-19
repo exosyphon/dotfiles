@@ -148,6 +148,7 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix openssl@3)/lib/
