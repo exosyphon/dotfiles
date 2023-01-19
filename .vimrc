@@ -48,9 +48,6 @@ nnoremap Y y$
 xnoremap <leader>p "_dP
 vmap s S
 
-" Use system clipboard
-set clipboard=unnamed
-
 nnoremap <leader>b :Buffer<CR>
 
 function! NerdTreeToggleFind()
