@@ -47,6 +47,9 @@ nnoremap <C-Q> :Rg<Cr>
 nnoremap Y y$
 xnoremap <leader>p "_dP
 vmap s S
+nnoremap <C-y> "+y
+vnoremap <C-y> "+y
+map <C-v> "+p
 
 nnoremap <leader>b :Buffer<CR>
 
