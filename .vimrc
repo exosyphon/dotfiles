@@ -53,6 +53,7 @@ map <C-v> "+p
 
 nnoremap <leader>b :Buffer<CR>
 
+let NERDTreeShowHidden=1
 function! NerdTreeToggleFind()
     if exists("g:NERDTree") && g:NERDTree.IsOpen()
         NERDTreeClose
