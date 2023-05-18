@@ -52,6 +52,19 @@ vnoremap <C-y> "+y
 map <C-v> "+p
 
 nnoremap <leader>b :Buffer<CR>
+inoremap jj <Esc>
+
+function! TogglePaste()
+    if(&paste == 0)
+        set paste
+        echo "Paste Mode Enabled"
+    else
+        set nopaste
+        echo "Paste Mode Disabled"
+    endif
+endfunction
+
+map <leader>p :call TogglePaste()<cr>
 
 let NERDTreeShowHidden=1
 function! NerdTreeToggleFind()
