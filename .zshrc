@@ -101,6 +101,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# No bell: Shut up Zsh
+unsetopt beep
+
 #Git
 alias ga='git add'
 alias gap='git add -p'
