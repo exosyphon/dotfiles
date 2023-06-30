@@ -121,6 +121,8 @@ alias unwip='git reset HEAD~'
 alias unroll='git reset HEAD~ --hard'
 alias gpfwl='git push --force-with-lease'
 alias glt='git describe --tags --abbrev=0'
+alias unroll='unwip && git checkout . && git clean -df'
+alias rspec_units='rspec --exclude-pattern "**/features/*_spec.rb"'
 alias awsume='. awsume sso;. awsume' 
 
 # Tmux
@@ -136,6 +138,12 @@ alias tl='tmux list-sessions'
 alias td='tmux detach'
 # Tmux Clear pane
 alias tc='clear; tmux clear-history; clear'
+
+bindkey -e
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
 
 export BUNDLE_GITHUB__COM="${GITHUB_ACTOR}:${GITHUB_TOKEN}"
 export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="${GITHUB_ACTOR}:${GITHUB_TOKEN}"
@@ -154,11 +162,16 @@ export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix openssl@3)/lib/
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+# ~/.tmux/plugins
+export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+# ~/.config/tmux/plugins
+export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 export PATH="${INSIGHTS_WORKSPACE}/bin:${PATH}"
 
 export DB_HOST=127.0.0.1
 export EVENTSTORE_DB_IMAGE="ghcr.io/eventstore/eventstore:21.10.1-alpha-arm64v8"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
