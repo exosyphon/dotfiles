@@ -31,7 +31,7 @@ disabled = true
 disabled = true
 
 [git_branch]
-disabled = true
+disabled = false
 
 [git_commit]
 disabled = true
@@ -43,4 +43,4 @@ disabled = true
 disabled = true
 
 [git_status]
-disabled = true
+disabled = false
