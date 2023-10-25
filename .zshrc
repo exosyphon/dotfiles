@@ -146,6 +146,10 @@ alias avim="NVIM_APPNAME=AstroNvim nvim"
 alias lvim="NVIM_APPNAME=LazyVim nvim"
 alias kvim="NVIM_APPNAME=KickstartNvim nvim"
 
+# Weather
+alias forecast='curl "https://wttr.in/wylie?1&F&q"'
+alias weather='curl "https://wttr.in/wylie?format=1"'
+
 bindkey -e
 bindkey "[D" backward-word
 bindkey "[C" forward-word
