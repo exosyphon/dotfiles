@@ -142,6 +142,10 @@ alias td='tmux detach'
 # Tmux Clear pane
 alias tc='clear; tmux clear-history; clear'
 
+alias avim="NVIM_APPNAME=AstroNvim nvim"
+alias lvim="NVIM_APPNAME=LazyVim nvim"
+alias kvim="NVIM_APPNAME=KickstartNvim nvim"
+
 bindkey -e
 bindkey "[D" backward-word
 bindkey "[C" forward-word
@@ -175,6 +179,7 @@ export DB_HOST=127.0.0.1
 export EVENTSTORE_DB_IMAGE="ghcr.io/eventstore/eventstore:21.10.1-alpha-arm64v8"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+source ~/fzf-git.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended --layout=reverse"
