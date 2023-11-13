@@ -127,6 +127,7 @@ alias glt='git describe --tags --abbrev=0'
 alias unroll='unwip && git checkout . && git clean -df'
 alias rspec_units='rspec --exclude-pattern "**/features/*_spec.rb"'
 alias awsume='. awsume sso;. awsume' 
+alias gprune=$'git branch --merged main | grep -v \'^[ *]*main$\' | xargs git branch -d'
 
 # Tmux
 # Attaches tmux to a session (example: ta portal)
