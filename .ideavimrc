@@ -52,11 +52,12 @@ map mc <A-n>
 map mx <A-x>
 map mp <A-p>
 
-" Running and debugging
-nnoremap ,r :action Rerun<CR>
-nnoremap ,c :action RunClass<CR>
-nnoremap ,b :action ToggleLineBreakpoint<CR>
-nnoremap ,d :action ContextDebug<CR>
+" Running test and debugging 
+nnoremap <leader>tl :action Rerun<CR>
+nnoremap <leader>t :action RunClass<CR>
+nnoremap <leader>tb :action ToggleLineBreakpoint<CR>
+nnoremap <leader>d :action ContextDebug<CR>
+nnoremap leadertf Action(EditorTextStart) \| Action(RunClass) \| Action(Back)
 
 set NERDTree
 let g:NERDTreeMapActivateNode='l'
