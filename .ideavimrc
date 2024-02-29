@@ -45,7 +45,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <TAB> :action PreviousTab<CR>
 nnoremap <s-TAB> :action NextTab<CR>
-nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>te :action ActivateTerminalToolWindow<CR>
 
 " multi cursor
 map mc <A-n>
