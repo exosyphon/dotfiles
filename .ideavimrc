@@ -6,6 +6,7 @@ set incsearch
 let mapleader = " "
 
 vmap s S
+imap jj <Esc>
 
 " system clipboard
 vmap <leader>y "+y
