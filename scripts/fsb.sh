@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# Fuzzy search over Git commits
+# Enter will view the commit
+# Ctrl-o will checkout the selected commit
 function fsb() {
     local pattern=$@
         local branches branch

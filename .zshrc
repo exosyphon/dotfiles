@@ -128,8 +128,8 @@ alias unroll='unwip && git checkout . && git clean -df'
 alias rspec_units='rspec --exclude-pattern "**/features/*_spec.rb"'
 alias awsume='. awsume sso;. awsume' 
 alias gprune=$'git branch --merged main | grep -v \'^[ *]*main$\' | xargs git branch -d'
-alias fsb='~/fsb'
-alias fshow='~/fshow'
+alias fsb='~/fsb.sh'
+alias fshow='~/fshow.sh'
 
 # Tmux
 # Attaches tmux to a session (example: ta portal)

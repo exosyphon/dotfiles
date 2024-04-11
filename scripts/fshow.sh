@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Fuzzy search Git branches in a repo
+# Looks for local and remote branches
 function fshow() {
   git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"  | \
    fzf --ansi --no-sort --reverse --tiebreak=index --preview \
