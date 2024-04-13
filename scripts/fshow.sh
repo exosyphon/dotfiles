@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Fuzzy search Git branches in a repo
-# Looks for local and remote branches
+# Fuzzy search over Git commits
+# Enter will view the commit
+# Ctrl-o will checkout the selected commit
 function fshow() {
   git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"  | \
    fzf --ansi --no-sort --reverse --tiebreak=index --preview \

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Fuzzy search over Git commits
-# Enter will view the commit
-# Ctrl-o will checkout the selected commit
+# Fuzzy search Git branches in a repo
+# Looks for local and remote branches
 function fsb() {
     local pattern=$@
         local branches branch
