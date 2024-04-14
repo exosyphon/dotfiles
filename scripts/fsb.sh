@@ -3,9 +3,9 @@
 # Fuzzy search Git branches in a repo
 # Looks for local and remote branches
 function fsb() {
-    local pattern=$@
+    local pattern=$*
         local branches branch
-        branches=$(git branch --all | awk 'tolower($0) ~ /'$pattern'/') &&
+        branches=$(git branch --all | awk 'tolower($0) ~ /'"$pattern"'/') &&
         branch=$(echo "$branches" |
                 fzf-tmux -p --reverse -1 -0 +m) &&
         if [ "$branch" = "" ]; then
@@ -13,4 +13,4 @@ function fsb() {
     fi;
     git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
-fsb
+fsb "$@"
