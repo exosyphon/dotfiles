@@ -11,6 +11,6 @@ function fsb() {
         if [ "$branch" = "" ]; then
             echo "[$0] No branch matches the provided pattern"; return;
     fi;
-    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
 }
 fsb "$@"
