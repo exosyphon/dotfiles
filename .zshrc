@@ -128,6 +128,7 @@ alias unroll='unwip && git checkout . && git clean -df'
 alias rspec_units='rspec --exclude-pattern "**/features/*_spec.rb"'
 alias awsume='. awsume sso;. awsume' 
 alias gprune=$'git branch --merged main | grep -v \'^[ *]*main$\' | xargs git branch -d'
+alias remove_branches='git branch | grep -v "master" | xargs git branch -D'
 alias fsb='~/fsb.sh'
 alias fshow='~/fshow.sh'
 
@@ -159,9 +160,14 @@ bindkey "[C" forward-word
 bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
 export BUNDLE_GITHUB__COM="${GITHUB_ACTOR}:${GITHUB_TOKEN}"
 export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="${GITHUB_ACTOR}:${GITHUB_TOKEN}"
 
+export PATH="/opt/homebrew/bin:${PATH}"
 PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
 export PATH
 
@@ -176,14 +182,7 @@ export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix openssl@3)/lib/
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-# ~/.tmux/plugins
-export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-# ~/.config/tmux/plugins
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-export PATH="${INSIGHTS_WORKSPACE}/bin:${PATH}"
 
-export DB_HOST=127.0.0.1
-export EVENTSTORE_DB_IMAGE="ghcr.io/eventstore/eventstore:21.10.1-alpha-arm64v8"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 source ~/fzf-git.sh
@@ -195,3 +194,13 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_OPTS='-m --height 50% --border --layout=reverse'
 fi
 
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+# bun completions
+[ -s "/Users/andrew/.bun/_bun" ] && source "/Users/andrew/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+export OPENAI_API_KEY=null
