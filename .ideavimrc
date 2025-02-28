@@ -2,6 +2,7 @@ set ideajoin
 set surround
 set multiple-cursors
 set incsearch
+set highlightedyank
 
 let mapleader = " "
 
@@ -63,3 +64,6 @@ nnoremap leadertf Action(EditorTextStart) \| Action(RunClass) \| Action(Back)
 set NERDTree
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
+
+set easymotion
+let g:EasyMotion_re_anywhere='s'
