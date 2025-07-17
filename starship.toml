@@ -24,9 +24,6 @@ disabled = true
 [hostname]
 disabled = true
 
-[aws]
-disabled = true
-
 [docker_context]
 disabled = true
 
@@ -57,3 +54,30 @@ disabled = true
 [cmd_duration]
 disabled = true
 
+[aws]
+format = "[$symbol($profile )]($style)"
+symbol = " "
+style = "bold yellow"
+disabled = false
+expiration_symbol = "X"
+force_display = false
+
+[aws.region_aliases]
+
+[aws.profile_aliases]
+
+[custom.pairs]
+format = "[$symbol($output )]($style)"
+symbol = "👥 "
+command = """git mob-print -i | awk '{print "jt,"$0} END { if (!NR) print "jt"}'"""
+when = "git rev-parse --is-inside-work-tree"
+require_repo = false
+shell = []
+description = "Shows initials of current `git mob` setting when in a git repo"
+style = "green bold"
+disabled = false
+detect_files = []
+detect_extensions = []
+detect_folders = []
+ignore_timeout = false
+unsafe_no_escape = false
