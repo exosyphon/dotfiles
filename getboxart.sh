@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#!/usr/bin/env bash
 
 # usage:
 #   ./getboxart.sh [--refresh] <BASE_URL> "search term"
