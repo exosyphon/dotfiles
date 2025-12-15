@@ -38,9 +38,6 @@ fi
 candidates=$(echo "$files" | grep -i "$SEARCH")
 [[ -z "$candidates" ]] && exit 1
 
-# Prefer USA
-region_candidates=$(echo "$candidates" | grep -Ei '\(USA\)|\(World\)|USA|World')
-[[ -n "$region_candidates" ]] && candidates="$region_candidates"
 
 # Build "decoded<TAB>encoded" list
 display_list=$(
