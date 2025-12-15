@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
+#!/usr/bin/env bash
 
 # usage:
 #   ./getboxart.sh [--refresh] <BASE_URL> "search term"
 
 REFRESH=0
 
-# check if first argument is --refresh
 if [[ "$1" == "--refresh" ]]; then
     REFRESH=1
     shift
@@ -25,80 +25,63 @@ mkdir -p "$OUTDIR"
 
 # Fetch or read cached directory listing
 if [[ -f "$CACHE_FILE" && $REFRESH -eq 0 ]]; then
-    echo "Using cached directory listing..."
     files=$(cat "$CACHE_FILE")
 else
-    echo "Fetching file index from $BASE_URL..."
-    html=$(curl -fsSL "$BASE_URL/") || {
-        echo "Failed to fetch $BASE_URL"
-        exit 1
-    }
-
-    # Extract .png filenames (already URL-encoded in HTML)
+    html=$(curl -fsSL "$BASE_URL/") || exit 1
     files=$(echo "$html" \
         | sed -n 's/.*href="\([^"]*\.png\)".*/\1/p' \
         | sort -u)
-
-    if [[ -z "$files" ]]; then
-        echo "No PNG files found at $BASE_URL"
-        exit 1
-    fi
-
-    # Save cache
     echo "$files" > "$CACHE_FILE"
-    echo "Cache updated: $CACHE_FILE"
 fi
 
-# Filter candidates by search term (case-insensitive)
+# Filter by search term
 candidates=$(echo "$files" | grep -i "$SEARCH")
+[[ -z "$candidates" ]] && exit 1
 
-if [[ -z "$candidates" ]]; then
-    echo "No matches found for \"$SEARCH\""
-    exit 1
-fi
-
-# Auto-prefer USA
+# Prefer USA
 usa_candidates=$(echo "$candidates" | grep -i "USA")
-if [[ -n "$usa_candidates" ]]; then
-    candidates="$usa_candidates"
-fi
+[[ -n "$usa_candidates" ]] && candidates="$usa_candidates"
 
-# Interactive chooser with Kitty preview (safe for special characters)
-if command -v fzf >/dev/null 2>&1 && command -v kitty >/dev/null 2>&1; then
-    echo "Select a boxart (Kitty preview available):"
-    match=$(echo "$candidates" | fzf \
-        --height=50% \
+# Build "decoded<TAB>encoded" list
+display_list=$(
+    while IFS= read -r encoded; do
+        decoded=$(printf '%b' "${encoded//%/\\x}")
+        printf "%s\t%s\n" "$decoded" "$encoded"
+    done <<< "$candidates"
+)
+
+# fzf with Kitty preview
+if command -v fzf >/dev/null && command -v kitty >/dev/null; then
+    selection=$(echo "$display_list" | fzf \
         --prompt="Boxart > " \
-        --preview="FILENAME={}; \
-IMAGE_URL=\"$BASE_URL/\$FILENAME\"; \
-tmpfile=\$(mktemp -t imgXXXX.png); \
-curl -fsSL \"\$IMAGE_URL\" -o \"\$tmpfile\"; \
-kitty +kitten icat --silent \"\$tmpfile\"; \
-rm -f \"\$tmpfile\"" \
+        --with-nth=1 \
+        --delimiter=$'\t' \
+        --preview="
+ENCODED=\$(echo {} | cut -f2);
+DECODED=\$(echo {} | cut -f1);
+IMAGE_URL=\"$BASE_URL/\$ENCODED\";
+tmp=\$(mktemp -t imgXXXX.png);
+curl -fsSL \"\$IMAGE_URL\" -o \"\$tmp\" &&
+kitty +kitten icat --silent \"\$tmp\";
+rm -f \"\$tmp\"
+" \
         --preview-window=right:60%)
 else
-    echo "fzf or kitty not found; using first match"
-    match=$(echo "$candidates" | head -n1)
+    selection=$(echo "$display_list" | head -n1)
 fi
 
-if [[ -z "$match" ]]; then
-    echo "No selection made"
-    exit 1
-fi
+[[ -z "$selection" ]] && exit 1
 
-remote="$BASE_URL/$match"
+decoded_name=$(echo "$selection" | cut -f1)
+encoded_name=$(echo "$selection" | cut -f2)
 
-# Decode URL encoding for the filename safely
-decoded_name=$(printf '%b' "${match//%/\\x}")
 outfile="$OUTDIR/$decoded_name"
+remote="$BASE_URL/$encoded_name"
 
 echo "Downloading:"
 echo "  $decoded_name"
 
-curl -fsSL "$remote" -o "$outfile" || {
-    echo "Download failed"
-    exit 1
-}
+curl -fsSL "$remote" -o "$outfile" || exit 1
 
 echo "Saved to $outfile"
 
