@@ -205,6 +205,11 @@ function t() {
   }
 }
 
+duckit() {
+  local query="${(j: :)@}"
+  w3m "https://lite.duckduckgo.com/lite/?q=${query// /+}"
+}
+
 . /usr/local/opt/asdf/libexec/asdf.sh
 
 # bun completions
