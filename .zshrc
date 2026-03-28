@@ -141,10 +141,7 @@ wt-add() {
   mkdir -p .worktrees
   git worktree add ".worktrees/$name" -b "$branch" 2>/dev/null || \
     git worktree add ".worktrees/$name" "$branch"
-  if [ -f ".worktrees/$name/package.json" ]; then
-    (cd ".worktrees/$name" && npm install --silent)
-  fi
-  echo "→ .worktrees/$name on $branch (ready)"
+  echo "→ .worktrees/$name on $branch"
 }
 
 wt-rm() {
