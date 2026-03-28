@@ -128,7 +128,7 @@ alias unroll='unwip && git checkout . && git clean -df'
 alias rspec_units='rspec --exclude-pattern "**/features/*_spec.rb"'
 alias awsume='. awsume sso;. awsume' 
 alias gprune=$'git branch --merged main | grep -v \'^[ *]*main$\' | xargs git branch -d'
-alias remove_branches='git branch | grep -v "master" | xargs git branch -D'
+alias remove_branches='git branch | grep -v "main" | xargs git branch -D'
 alias fsb='~/fsb.sh'
 alias fshow='~/fshow.sh'
 
