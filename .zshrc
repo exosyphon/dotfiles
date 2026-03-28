@@ -150,15 +150,6 @@ wt-rm() {
   echo "→ removed .worktrees/$name"
 }
 
-wt-merge() {
-  local name=$1
-  local branch=${2:-"feature/$name"}
-  git merge "$branch" --no-edit && \
-    git worktree remove ".worktrees/$name" && \
-    git branch -d "$branch" && \
-    echo "→ merged and cleaned up $name"
-}
-
 # Tmux
 # Attaches tmux to a session (example: ta portal)
 alias ta='tmux attach -t'
