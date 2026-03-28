@@ -132,6 +132,36 @@ alias remove_branches='git branch | grep -v "master" | xargs git branch -D'
 alias fsb='~/fsb.sh'
 alias fshow='~/fshow.sh'
 
+# Git Worktrees (for parallel agent workflows)
+alias wt-ls="git worktree list"
+
+wt-add() {
+  local name=$1
+  local branch=${2:-"feature/$name"}
+  mkdir -p .worktrees
+  git worktree add ".worktrees/$name" -b "$branch" 2>/dev/null || \
+    git worktree add ".worktrees/$name" "$branch"
+  if [ -f ".worktrees/$name/package.json" ]; then
+    (cd ".worktrees/$name" && npm install --silent)
+  fi
+  echo "→ .worktrees/$name on $branch (ready)"
+}
+
+wt-rm() {
+  local name=$1
+  git worktree remove ".worktrees/$name"
+  echo "→ removed .worktrees/$name"
+}
+
+wt-merge() {
+  local name=$1
+  local branch=${2:-"feature/$name"}
+  git merge "$branch" --no-edit && \
+    git worktree remove ".worktrees/$name" && \
+    git branch -d "$branch" && \
+    echo "→ merged and cleaned up $name"
+}
+
 # Tmux
 # Attaches tmux to a session (example: ta portal)
 alias ta='tmux attach -t'
